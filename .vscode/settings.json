@@ -4,6 +4,8 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "set": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "tuple": "cpp",
+        "utility": "cpp"
     }
 }
