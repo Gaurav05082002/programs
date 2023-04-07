@@ -12,19 +12,34 @@ void solve(){
     for(int i=0; i<n; i++){
         cin>>sar[i];
     }
+    int maxinfar = *max_element(far, far + n);
+    int maxinsar = *max_element(sar, sar + n);
+    if(maxinfar==far[n-1] && maxinsar==sar[n-1]){
+              cout<<"YES"<<endl;
+               return;
+    }
     for (int i = 0; i < n; i++)
-    {    int temp = far[i];
-         far[i]=sar[i];
-         sar[i]=temp;
+    {    
+         for (int j = 0; j < n; j++)
+         {
+        
+          int temp = far[i];
+         far[i]=sar[j];
+         sar[j]=temp;
          int maxinfar = *max_element(far, far + n);
          int maxinsar = *max_element(sar, sar + n);
          if(maxinfar==far[n-1] && maxinsar==sar[n-1]){
               cout<<"YES"<<endl;
                return;
          }
-         sar[i]=far[i];
+         sar[j]=far[i];
          far[i]=temp;
          
+
+         }
+         
+        
+        
     }
     cout<<"NO"<<endl;
     
