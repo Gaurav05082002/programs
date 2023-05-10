@@ -1,39 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
+int arr[10100];
 
-void solve(){
-    int n;
-    cin>>n;
-    int far[n];
-    int sar[n];
-    for(int i=0; i<n; i++){
-        cin>>far[i];
+int check(int x)
+{
+    if(arr[x]<arr[0]){
+        return 1;
     }
-    for(int i=0; i<n; i++){
-        cin>>sar[i];
+    else {
+        return 0;
     }
-    for (int i = 0; i < n; i++)
-    {    int temp = far[i];
-         far[i]=sar[i];
-         sar[i]=temp;
-         int maxinfar = *max_element(far, far + n);
-         int maxinsar = *max_element(sar, sar + n);
-         if(maxinfar==far[n-1] && maxinsar==sar[n-1]){
-              cout<<"YES"<<endl;
-               return;
-         }
-         sar[i]=far[i];
-         far[i]=temp;
-         
-    }
-    cout<<"NO"<<endl;
-    
-
 }
 
-signed main(){
+void solve()
+{
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    // 00001111
+    int lo = 0;
+    int hi = n - 1;
+    int ans = -1;
+
+    while (lo <= hi)
+    {
+        int mid = (lo + hi) / 2;
+        // if(arr[mid] != 1){
+        if (check(mid))
+        {
+              ans = mid;
+            hi = mid - 1;
+           
+        }
+        else
+        {
+           lo = mid + 1;
+        }
+    }
+
+    cout << ans << endl;
+}
+
+signed main()
+{
     ios_base::sync_with_stdio(0);
-    cin.tie(0);cout.tie(0);
-    int t; cin>>t; while(t--)
-    solve();
+    cin.tie(0);
+    cout.tie(0);
+    int t;
+    cin >> t;
+    while (t--)
+        solve();
 }
