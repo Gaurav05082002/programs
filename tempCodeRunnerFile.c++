@@ -1,51 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long
-int arr[10100];
-
-int check(int x)
-{
-    if(arr[x]<arr[0]){
-        return 1;
-    }
-    else {
-        return 0;
-    }
-}
-
+#define long long int
 void solve()
 {
     int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
+    cin>>n;
+    set<int> mySet;
+    for (int i = 1; i * i < n; i++)
     {
-        cin >> arr[i];
-    }
-
-    // 00001111
-    int lo = 0;
-    int hi = n - 1;
-    int ans = -1;
-
-    while (lo <= hi)
-    {
-        int mid = (lo + hi) / 2;
-        // if(arr[mid] != 1){
-        if (check(mid))
+        if (n % i == 0)
         {
-              ans = mid;
-            hi = mid - 1;
+
+            mySet.insert(i);
+            if (n / i != i)
+            {
+                mySet.insert(n / i);
+            }
+
            
         }
-        else
-        {
-           lo = mid + 1;
-        }
     }
 
-    cout << ans << endl;
+    for (const auto &element : mySet)
+    {
+        cout << element << " ";
+    }
 }
-
 signed main()
 {
     ios_base::sync_with_stdio(0);
