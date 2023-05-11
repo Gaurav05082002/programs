@@ -1,51 +1,53 @@
 #include <bits/stdc++.h>
 using namespace std;
-using lli = long long
-lli n , m ,k ;
-vector<lli>arr,brr;
-bool check(int x){
-lli cnt=0;
-for(int i =0; i<n; i++){
-    cnt+=upper_bound(brr.begin(),brr.end(), x-arr[i]) - brr.begin();}
-    return cnt>=k;
+#define int long long
+int n, m, k;
+vector<int> a, b;
+bool check(int x)
+{
+   int count=0;
+   for(int i=0; i<n; i++)
+   {
+       count+=upper_bound(b.begin(), b.end(), x-a[i])-b.begin();
+   }
+    return count>=k;
 }
-
-
-    
 void solve()
 {
-    cin>>n>>m>>k;
-    arr.resize(n);
-    arr.resize(m);
-    for(int i=0; i<n; i++){
-        cin>>arr[i];
+   cin>>n>>m>>k;
+    a.resize(n);
+    b.resize(m);
+    
+    for(int i=0; i<n; i++)
+        cin>>a[i];
+    for(int i=0; i<m; i++)
+        cin>>b[i];
+    
+    if(n>m)
+    {
+        swap(n, m);
+        swap(a, b);
     }
-    for(int i=0; i<m; i++){
-        cin>>brr[i];
-    }
-    if(n>m){
-        swap(n,m);
-        swap(arr,brr);
-    }
-    sort(arr.begin(), arr.end());
-    sort(brr.begin(), brr.end());
-    lli lo = arr[0]+brr[0];
-    lli hi = arr.back()+brr.back();
-    lli ans = hi;
-    while(lo<=hi){
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    int lo=a[0]+b[0];
+    int hi=a[n-1]+b[m-1];
+    int ans=0;
+    while(lo<=hi)
+    {
+        int mid;
         mid=(lo+hi)/2;
-        if(check(mid)){
+        
+        if(check(mid))
+        {
             ans=mid;
-            hi = mid-1;
+            hi=mid-1;
         }
-        else{
+        else
             lo=mid+1;
-        }
     }
-    cout<<ans;
+    cout<<ans<<endl;
     
-    
-   
 }
 signed main(){
     ios_base::sync_with_stdio(0);
