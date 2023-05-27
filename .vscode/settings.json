@@ -10,6 +10,9 @@
         "xtree": "cpp",
         "ios": "cpp",
         "system_error": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "initializer_list": "cpp",
+        "type_traits": "cpp",
+        "xutility": "cpp"
     }
 }
