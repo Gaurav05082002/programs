@@ -14,9 +14,12 @@ using namespace std;
 int n , m;
 int vis[1001]; 
 vector<int> graph[1001];
+vector<vector<int>> cc;
+vector<int> current_cc;
 void dfs(int vertex , int comp){
     // take action on vertex after entering the vertex
     vis[vertex]=comp;
+    current_cc.push_back(vertex);
 
     for(int child : graph[vertex]){
          // take action on child before entering 
@@ -38,14 +41,24 @@ void solve()
        graph[v1].push_back(v2);
         graph[v2].push_back(v1);
    }
-   for (int i = 0; i < n; i++)
+   for (int i = 1; i <= n; i++)
    {
          if(vis[i]==0){
             cnt++;
+            current_cc.clear();
             dfs(i,cnt);
+            cc.push_back(current_cc);
+            
          }
    }
-   cout<<cnt<<endl;
+   cout<<"count"<<cnt<<endl;
+   cout<<"print the components"<<endl;
+   for(auto c_cc : cc){
+    for(int vertex : c_cc){
+        cout<<vertex<<" ";
+    }
+    cout<<endl;
+   }
    
    
 }
