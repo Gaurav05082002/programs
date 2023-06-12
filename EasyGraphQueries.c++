@@ -9,7 +9,7 @@ void dfs(int vertex , int comp){
     freq[comp]++;
     for (int child : g[vertex])
     {
-        if(vis[vertex]>0){ continue;}
+         if(vis[child]>0){continue;}
         dfs(child,comp);
     }
     
@@ -17,23 +17,31 @@ void dfs(int vertex , int comp){
 void solve()
 {
    cin>>n>>m>>q;
+  
    int cnt=0;
    for (int i = 0; i < m; i++)
    {
        int v1;
        int v2;
        cin>>v1>>v2;
-       graph[v1].push_back(v2);
-        graph[v2].push_back(v1);
+       g[v1].push_back(v2);
+        g[v2].push_back(v1);
    }
-   for (int i = 0; i < n; i++)
+   for (int i = 1; i <= n; i++)
    {
          if(!vis[i]){
             cnt++;
             dfs(i,cnt);
          }
    }
-   
+//   for(auto child : freq){
+//       cout<<child.first<<" " <<child.second<<endl;
+//   }
+//   cout<<"vis"<<endl;
+//   for(int i=1; i<=n; i++){
+//       cout<<"i="<<i<<"vis[i]"<<vis[i]<<endl;
+//   }
+//   cout<<"ans"<<endl;
    while (q--)
    {
         int qa;
@@ -43,9 +51,15 @@ void solve()
             cin>>qb;
             cout<<freq[vis[qb]]<<endl;
         }
-        if(q==2){
+        if(qa==2){
             int qc,qd;
             cin>>qc>>qd;
+            if(freq[vis[qc]]==freq[vis[qd]]){
+                cout<<"YES"<<endl;
+            }
+            else{
+                cout<<"NO"<<endl;
+            }
         }
    }
    
@@ -53,6 +67,6 @@ void solve()
 signed main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0);cout.tie(0);
-    // int t; cin>>t; while(t--)
+   
     solve();
 }
