@@ -9,7 +9,7 @@ int par[100100];
 bool isleaf[100100];
 int subtreesz[100100];
 int numchild[100100];
-void dfs( int node , int parent , int depth){
+void dfs( in t node , int parent , int depth){
      dep[node]=depth;
      par[node]=parent;
      numchild[node]=0;
