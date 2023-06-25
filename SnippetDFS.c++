@@ -7,10 +7,10 @@ int n , m;
 bool vis[1001]; 
 vector<int> graph[1001];
 
-void dfs(int vertex , int comp){
+void dfs(int vertex , int comp , int k){
     // take action on vertex after entering the vertex
     vis[vertex]=true;
-   
+   f
 
     for(int child : graph[vertex]){
          // take action on child before entering 
