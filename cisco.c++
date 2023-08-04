@@ -1,39 +1,22 @@
-#include <bits/stdc++.h>
-using namespace std;
-void solve()
-{
-    int check(int x)
-    {
-        if (arr[x] < X)
-            return 0;
-        else
-            return 1;
-    }
-    //    finding 1st 1 in sorted 000111
-    int ans = -1;
-    int lo = 0;
-    int hi = n - 1;
-    while (lo <= hi)
-    {
-        int mid = lo + hi / 2 ;
-        if (check(mid) != 1)
-        {
-            lo = mid + 1;
-        }
-        else
-        {
-            ans = mid;
-            hi = mid - 1;
+void rec(int level){
+    //base case 
+    if(level==n){
+       
+        for(auto v: sol){
+            cout<<v<<
+;
         }
     }
-}
-signed main()
-{
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int t;
-    cin >> t;
-    while (t--)
-        solve();
+    //recursive case 
+    for (let i = 0; i < array.length; i++) {
+        //loop over the CHOICE
+        //CHECK the level you reached 
+        if(check(level)){
+             Sol.push_back(arr[level]);
+             //MOVE
+             rec(level+1);
+             sol.pop_back();
+        }
+    }
+    
 }
